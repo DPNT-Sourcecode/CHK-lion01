@@ -78,7 +78,7 @@ RSpec.describe Checkout do
 
   context "Round 4 tests" do
     it "returns a checkout value of 800 for one of each new item" do
-      expect(Checkout.new.checkout("ghijklmnopqrstuvwxyz".upcase())).to eq (800)
+      expect(Checkout.new.checkout("ghijklmnopqrstuvwxyz".upcase())).to eq (688)
     end
 
     it "has multiple offers for a H. 5H = 45, 10H = 80" do
@@ -87,8 +87,8 @@ RSpec.describe Checkout do
     end
 
     it "has offer for K. 2K = 150" do
-      expect(Checkout.new.checkout("KK")).to eq 150
-      expect(Checkout.new.checkout("K"*3)).to eq 230
+      expect(Checkout.new.checkout("KK")).to eq 120
+      expect(Checkout.new.checkout("K"*3)).to eq 190
     end
 
     it "has offer for P. 5P = 200" do
@@ -113,6 +113,16 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("RRRQ")).to eq 150
       expect(Checkout.new.checkout("RRR")).to eq 150
       expect(Checkout.new.checkout("RRRQQ")).to eq 150 + 30
+    end
+  end
+
+  context "Round 5 tests" do
+    it "captures changes in price of SKU items" do
+      expect(Checkout.new.checkout("K")).to eq 70
+      expect(Checkout.new.checkout("S")).to eq 20
+      expect(Checkout.new.checkout("X")).to eq 17
+      expect(Checkout.new.checkout("Y")).to eq 20
+      expect(Checkout.new.checkout("Z")).to eq 21
     end
   end
 

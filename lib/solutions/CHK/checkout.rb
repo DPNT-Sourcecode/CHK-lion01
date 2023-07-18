@@ -15,7 +15,7 @@ class Checkout
       'H' => {price: 10, offers: [[5, 45], [10, 80]]},
       'I' => {price: 35, offers: []},
       'J' => {price: 60, offers: []},
-      'K' => {price: 80, offers: [[2, 150]]},
+      'K' => {price: 70, offers: [[2, 120]]},
       'L' => {price: 90, offers: []},
       'M' => {price: 15, offers: []},
       'N' => {price: 40, offers: []},
@@ -23,16 +23,16 @@ class Checkout
       'P' => {price: 50, offers: [[5, 200]]},
       'Q' => {price: 30, offers: [[3, 80]]},
       'R' => {price: 50, offers: []},
-      'S' => {price: 30, offers: []},
+      'S' => {price: 20, offers: []},
       'T' => {price: 20, offers: []},
       'U' => {price: 40, offers: [[4, 120]]},
       'V' => {price: 50, offers: [[2, 90], [3, 130]]},
       'W' => {price: 20, offers: []},
-      'X' => {price: 90, offers: []},
-      'Y' => {price: 10, offers: []},
-      'Z' => {price: 50, offers: []},
+      'X' => {price: 17, offers: []},
+      'Y' => {price: 20, offers: []},
+      'Z' => {price: 21, offers: []},
     }
-    
+
     total = 0
     sku_count = Hash.new(0)
 
