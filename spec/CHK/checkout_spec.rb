@@ -36,4 +36,11 @@ RSpec.describe Checkout do
     end
   end
 
+  context "Round 2 tests" do
+    it "has multiple offers for a single SKU. 7A = 300" do
+      expect(Checkout.new.checkout("AAAAAAA")).to eq 300
+    end
+
+  end
+
 end
