@@ -24,7 +24,11 @@ class Checkout
       sku_count[sku] += 1
     end
 
-    puts sku_count
+    sku_count.each do |sku, count|
+      normal_price = prices[sku][:price]
+      special_offers = prices[sku][:offers]
+      puts normal_price, special_offers
+    end
     
     # normal_offers = count_A * 50 + count_B * 30 + count_C * 20 + count_D * 15
     # special_offers = special_A * 130 + special_B * 45
@@ -33,4 +37,5 @@ class Checkout
   end
 
 end
+
 
