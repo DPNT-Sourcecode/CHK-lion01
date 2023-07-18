@@ -25,6 +25,11 @@ class Checkout
     end
 
     puts sku_count
+    free_B = sku_count["E"] / 2
+    puts free_B
+    sku_count["B"] -= free_B
+    puts sku_count
+
 
     sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
@@ -48,5 +53,6 @@ class Checkout
   end
 
 end
+
 
 
