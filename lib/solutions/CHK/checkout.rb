@@ -15,7 +15,7 @@ class Checkout
       'B' => {price: 30, offers: [[2, 45]]},
       'C' => {price: 20, offers: []},
       'D' => {price: 15, offers: []},
-      'E' => {price: 40, offers: [[2, 0, 'B']]},
+      'E' => {price: 40, offers: [[2, 80, 'B']]},
     }
     total = 0
     sku_count = Hash.new(0)
@@ -23,6 +23,8 @@ class Checkout
     skus.each_char do |sku|
       sku_count[sku] += 1
     end
+
+    puts sku_count
 
     sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
@@ -46,4 +48,5 @@ class Checkout
   end
 
 end
+
 
