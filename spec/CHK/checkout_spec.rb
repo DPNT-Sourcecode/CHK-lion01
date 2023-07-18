@@ -85,6 +85,15 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("HHHHH")).to eq 45
       expect(Checkout.new.checkout("HHHHHHHHHH")).to eq 80
     end
+
+    it "has offer for K. 2K = 150" do
+      expect(Checkout.new.checkout("KK")).to eq 150
+      expect(Checkout.new.checkout("K"*3)).to eq 230
+    end
+
+    it "has offer for P. 2P = 150" do
+      expect(Checkout.new.checkout("P"*5)).to eq 200
+    end
   end
 
 end
