@@ -91,8 +91,21 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("K"*3)).to eq 230
     end
 
-    it "has offer for P. 2P = 150" do
+    it "has offer for P. 5P = 200" do
       expect(Checkout.new.checkout("P"*5)).to eq 200
+    end
+
+    it "has offer for Q, U & V" do
+      expect(Checkout.new.checkout("Q"*3)).to eq 80
+      expect(Checkout.new.checkout("U"*4)).to eq 120
+      expect(Checkout.new.checkout("V"*2)).to eq 90
+      expect(Checkout.new.checkout("V"*3)).to eq 130
+      expect(Checkout.new.checkout("V"*6)).to eq 260
+    end
+
+    it "has a buy and got another SKU free for 3N get one M free" do
+      expect(Checkout.new.checkout("NNNM")).to eq 120
+      expect(Checkout.new.checkout("NNN")).to eq 120
     end
   end
 
