@@ -7,6 +7,7 @@ class Checkout
       when "B" then 30
       when "C" then 20
       when "D" then 15
+      else -1
     end
   end
 

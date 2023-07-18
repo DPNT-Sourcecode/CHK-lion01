@@ -22,4 +22,8 @@ RSpec.describe Checkout do
     expect(Checkout.new.checkout("x")).to eq -1
   end
 
+  it "returns a checkout value of 100 when A, B, C in basket" do
+    expect(Checkout.new.checkout("A,B,C")).to eq 100
+  end
+
 end
