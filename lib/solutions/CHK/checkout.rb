@@ -35,10 +35,14 @@ class Checkout
 
     total = 0
     @sku_count = Hash.new(0)
+    group_offer = []
 
     skus.each_char do |sku|
       @sku_count[sku] += 1
+      group_offer << prices[sku][:price]
     end
+
+    puts group_offer
 
     adjust_total_for_free_items
 
@@ -79,5 +83,6 @@ class Checkout
   end
 
 end
+
 
 
