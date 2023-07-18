@@ -39,10 +39,14 @@ class Checkout
 
     skus.each_char do |sku|
       @sku_count[sku] += 1
-      group_offer << prices[sku][:price]
+      if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+        group_offer << prices[sku][:price]
+      end
     end
 
-    puts group_offer
+    puts group_offer.sort.reverse
+    number_of_group_offers = group_offer.length / 3
+    puts number_of_group_offers
 
     adjust_total_for_free_items
 
@@ -83,6 +87,7 @@ class Checkout
   end
 
 end
+
 
 
 
