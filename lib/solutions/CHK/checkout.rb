@@ -19,10 +19,8 @@ class Checkout
       sku_count[sku] += 1
     end
 
-    free_B = sku_count["E"] / 2
-    sku_count["B"] -= free_B
+    sku_count["B"] -= sku_count["E"] / 2
     if sku_count["B"] < 0 then sku_count["B"] = 0 end
-
 
     sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
@@ -38,10 +36,6 @@ class Checkout
     end
 
     return total
-    
-    # normal_offers = count_A * 50 + count_B * 30 + count_C * 20 + count_D * 15
-    # special_offers = special_A * 130 + special_B * 45
-    # return normal_offers + special_offers
     
   end
 

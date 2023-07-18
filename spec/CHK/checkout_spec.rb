@@ -65,6 +65,15 @@ RSpec.describe Checkout do
     it "returns a checkout value of 10 if only F in basket" do
       expect(Checkout.new.checkout("F")).to eq 10
     end
+
+    it "returns a checkout value of 20 if 2F or 3F in basket" do
+      expect(Checkout.new.checkout("FF")).to eq 20
+      expect(Checkout.new.checkout("FFF")).to eq 20
+    end
+
+    it "correctly calculates checkout of big basket" do
+      expect(Checkout.new.checkout("ABCFDEDACAABACAAEEEFFF")).to eq (300 + 0 + 60 + 30 + 160 + 30)
+    end
   end
 
 end
