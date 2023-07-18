@@ -17,11 +17,20 @@ class Checkout
       'D' => {price: 15, offers: []},
       'E' => {price: 40, offers: [[3, 80]]},
     }
+    total = 0
+    sku_count = Hash.new(0)
 
+    skus.each_char do |sku|
+      sku_count[sku] += 1
+    end
+
+    puts sku_count
     
-    normal_offers = count_A * 50 + count_B * 30 + count_C * 20 + count_D * 15
-    special_offers = special_A * 130 + special_B * 45
-    return normal_offers + special_offers
+    # normal_offers = count_A * 50 + count_B * 30 + count_C * 20 + count_D * 15
+    # special_offers = special_A * 130 + special_B * 45
+    # return normal_offers + special_offers
+    
   end
 
 end
+
