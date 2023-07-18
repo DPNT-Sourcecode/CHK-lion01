@@ -45,7 +45,7 @@ class Checkout
     end
 
     number_of_group_offers = group_offer.length / 3
-    if number_of_group_offers = 0
+    if number_of_group_offers == 0
       total_group_offer = 0
     else
       total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
@@ -87,12 +87,3 @@ class Checkout
   end
 
 end
-
-
-
-
-
-
-
-
-
