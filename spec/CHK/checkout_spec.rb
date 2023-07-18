@@ -46,7 +46,7 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("E")).to eq 40
     end
 
-    it "returns a checkout value of 80 if 2E or 3E in basket. Customer may not want free E" do
+    it "returns a checkout value of 80 if 2E or 120 3E in basket." do
       expect(Checkout.new.checkout("EE")).to eq 80
       expect(Checkout.new.checkout("EEE")).to eq 120
     end
@@ -58,5 +58,6 @@ RSpec.describe Checkout do
   end
 
 end
+
 
 

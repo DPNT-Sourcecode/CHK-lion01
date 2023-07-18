@@ -24,11 +24,9 @@ class Checkout
       sku_count[sku] += 1
     end
 
-    puts sku_count
     free_B = sku_count["E"] / 2
-    puts free_B
     sku_count["B"] -= free_B
-    puts sku_count
+    if sku_count["B"] < 0 then sku_count["B"] = 0 end
 
 
     sku_count.each do |sku, count|
@@ -53,6 +51,7 @@ class Checkout
   end
 
 end
+
 
 
 
