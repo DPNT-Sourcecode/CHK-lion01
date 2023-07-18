@@ -23,14 +23,14 @@ class Checkout
       'P' => {price: 50, offers: [[5, 200]]},
       'Q' => {price: 30, offers: [[3, 80]]},
       'R' => {price: 50, offers: []},
-      'S' => {price: 20, offers: []},
-      'T' => {price: 20, offers: []},
+      'S' => {price: 20, offers: [3, 45]},
+      'T' => {price: 20, offers: [3, 45]},
       'U' => {price: 40, offers: [[4, 120]]},
       'V' => {price: 50, offers: [[2, 90], [3, 130]]},
       'W' => {price: 20, offers: []},
-      'X' => {price: 17, offers: []},
-      'Y' => {price: 20, offers: []},
-      'Z' => {price: 21, offers: []},
+      'X' => {price: 17, offers: [3, 45]},
+      'Y' => {price: 20, offers: [3, 45]},
+      'Z' => {price: 21, offers: [3, 45]},
     }
 
     total = 0
@@ -55,11 +55,11 @@ class Checkout
       total += normal_price * accum
     end
 
-    group_count = @sku_count.select do |sku, _count|
+    group_offer_count = @sku_count.select do |sku, _count|
       ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
     end
+    total -= group_offer_count.values.sum / 3 * 45
 
-    puts group_count.values.sum
 
     return total
     
@@ -79,5 +79,6 @@ class Checkout
   end
 
 end
+
 
 
