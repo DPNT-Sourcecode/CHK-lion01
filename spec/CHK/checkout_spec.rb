@@ -59,7 +59,12 @@ RSpec.describe Checkout do
     it "correctly calculates checkout of big basket" do
       expect(Checkout.new.checkout("ABDEDACAABACAAEEE")).to eq (300 + 0 + 40 + 30 + 160)
     end
+  end
 
+  context "Round 3 tests" do
+    it "returns a checkout value of 10 if only F in basket" do
+      expect(Checkout.new.checkout("F")).to eq 10
+    end
   end
 
 end

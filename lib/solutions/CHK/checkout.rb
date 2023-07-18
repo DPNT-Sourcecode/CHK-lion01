@@ -2,20 +2,15 @@
 class Checkout
 
   def checkout(skus)
-    return -1 if skus.match(/[^ABCDE]/)
+    return -1 if skus.match(/[^ABCDEF]/)
 
-    # count_A = skus.count("A") % 3
-    # special_A = skus.count("A") / 3
-    # count_B = skus.count("B") % 2
-    # special_B = skus.count("B") / 2
-    # count_C = skus.count("C")
-    # count_D = skus.count("D")
     prices = {
       'A' => {price: 50, offers: [[3, 130], [5, 200]]},
       'B' => {price: 30, offers: [[2, 45]]},
       'C' => {price: 20, offers: []},
       'D' => {price: 15, offers: []},
-      'E' => {price: 40, offers: [[2, 80, 'B']]},
+      'E' => {price: 40, offers: []},
+      'F' => {price: 10, offers: [[3, 20]]},
     }
     total = 0
     sku_count = Hash.new(0)
