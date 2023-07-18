@@ -44,6 +44,8 @@ class Checkout
       end
     end
 
+    puts "Group offer values", group_offer
+
     number_of_group_offers = group_offer.length / 3
     total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
 
@@ -63,7 +65,7 @@ class Checkout
       total += normal_price * accum
     end
 
-    return total
+    return total += total_group_offer
     
   end
 
@@ -81,6 +83,7 @@ class Checkout
   end
 
 end
+
 
 
 
