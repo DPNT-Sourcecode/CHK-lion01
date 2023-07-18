@@ -11,26 +11,26 @@ class Checkout
       'D' => {price: 15, offers: []},
       'E' => {price: 40, offers: []},
       'F' => {price: 10, offers: [[3, 20]]},
-      'G' => {price: 20, offers: [[3, 20]]},
-      'H' => {price: 10, offers: [[3, 20]]},
-      'I' => {price: 35, offers: [[3, 20]]},
-      'J' => {price: 60, offers: [[3, 20]]},
+      'G' => {price: 20, offers: []},
+      'H' => {price: 10, offers: [[5, 45], [10, 80]]},
+      'I' => {price: 35, offers: []},
+      'J' => {price: 60, offers: []},
       'K' => {price: 80, offers: [[3, 20]]},
-      'L' => {price: 90, offers: [[3, 20]]},
-      'M' => {price: 15, offers: [[3, 20]]},
+      'L' => {price: 90, offers: []},
+      'M' => {price: 15, offers: []},
       'N' => {price: 40, offers: [[3, 20]]},
-      'O' => {price: 10, offers: [[3, 20]]},
+      'O' => {price: 10, offers: []},
       'P' => {price: 50, offers: [[3, 20]]},
       'Q' => {price: 30, offers: [[3, 20]]},
       'R' => {price: 50, offers: [[3, 20]]},
-      'S' => {price: 30, offers: [[3, 20]]},
-      'T' => {price: 20, offers: [[3, 20]]},
+      'S' => {price: 30, offers: []},
+      'T' => {price: 20, offers: []},
       'U' => {price: 40, offers: [[3, 20]]},
       'V' => {price: 50, offers: [[3, 20]]},
-      'W' => {price: 20, offers: [[3, 20]]},
-      'X' => {price: 90, offers: [[3, 20]]},
-      'Y' => {price: 10, offers: [[3, 20]]},
-      'Z' => {price: 50, offers: [[3, 20]]},
+      'W' => {price: 20, offers: []},
+      'X' => {price: 90, offers: []},
+      'Y' => {price: 10, offers: []},
+      'Z' => {price: 50, offers: []},
     }
     total = 0
     sku_count = Hash.new(0)
@@ -60,3 +60,4 @@ class Checkout
   end
 
 end
+

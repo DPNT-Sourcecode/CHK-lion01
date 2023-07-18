@@ -79,7 +79,11 @@ RSpec.describe Checkout do
   context "Round 4 tests" do
     it "returns a checkout value of 800 for one of each new item" do
       expect(Checkout.new.checkout("ghijklmnopqrstuvwxyz".upcase())).to eq (800)
+    end
 
+    it "has multiple offers for a H. 5H = 45, 10H = 80" do
+      expect(Checkout.new.checkout("HHHHH")).to eq 45
+      expect(Checkout.new.checkout("HHHHHHHHHH")).to eq 80
     end
   end
 
