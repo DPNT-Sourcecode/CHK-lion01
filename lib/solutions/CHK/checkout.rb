@@ -34,23 +34,15 @@ class Checkout
     }
 
     total = 0
-    sku_count = Hash.new(0)
+    @sku_count = Hash.new(0)
 
     skus.each_char do |sku|
-      sku_count[sku] += 1
+      @sku_count[sku] += 1
     end
 
-    sku_count["B"] -= sku_count["E"] / 2
-    if sku_count["B"] < 0 then sku_count["B"] = 0 end
-    
-    sku_count["M"] -= sku_count["N"] / 3
-    if sku_count["M"] < 0 then sku_count["M"] = 0 end
+    adjust_total_for_free_items
 
-    sku_count["Q"] -= sku_count["R"] / 3
-    if sku_count["Q"] < 0 then sku_count["Q"] = 0 end
-    
-
-    sku_count.each do |sku, count|
+    @sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
       special_offers = prices[sku][:offers]
       accum = count
@@ -67,4 +59,18 @@ class Checkout
     
   end
 
+  private
+
+  def adjust_total_for_free_items
+    @sku_count["B"] -= @sku_count["E"] / 2
+    if @sku_count["B"] < 0 then @sku_count["B"] = 0 end
+    
+    @sku_count["M"] -= @sku_count["N"] / 3
+    if @sku_count["M"] < 0 then @sku_count["M"] = 0 end
+
+    @sku_count["Q"] -= @sku_count["R"] / 3
+    if @sku_count["Q"] < 0 then @sku_count["Q"] = 0 end
+  end
+
 end
+
