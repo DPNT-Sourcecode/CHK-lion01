@@ -47,8 +47,9 @@ class Checkout
     puts group_offer.sort.reverse
     number_of_group_offers = group_offer.length / 3
     puts "num of off", number_of_group_offers
-    puts "remianing", group_offer.sort.reverse[0..(2*number_of_group_offers)].sum
-    total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[0..(2*number_of_group_offers)].sum
+    puts "offer total", (number_of_group_offers * 45)
+    puts "remianing", group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
+    total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
     puts total_group_offer
 
     adjust_total_for_free_items
@@ -90,6 +91,7 @@ class Checkout
   end
 
 end
+
 
 
 
