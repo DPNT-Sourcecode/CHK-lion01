@@ -23,14 +23,14 @@ class Checkout
       'P' => {price: 50, offers: [[5, 200]]},
       'Q' => {price: 30, offers: [[3, 80]]},
       'R' => {price: 50, offers: []},
-      'S' => {price: 20, offers: [3, 45]},
-      'T' => {price: 20, offers: [3, 45]},
+      'S' => {price: 20, offers: [[3, 45]]},
+      'T' => {price: 20, offers: [[3, 45]]},
       'U' => {price: 40, offers: [[4, 120]]},
       'V' => {price: 50, offers: [[2, 90], [3, 130]]},
       'W' => {price: 20, offers: []},
-      'X' => {price: 17, offers: [3, 45]},
-      'Y' => {price: 20, offers: [3, 45]},
-      'Z' => {price: 21, offers: [3, 45]},
+      'X' => {price: 17, offers: [[3, 45]]},
+      'Y' => {price: 20, offers: [[3, 45]]},
+      'Z' => {price: 21, offers: [[3, 45]]},
     }
 
     total = 0
@@ -79,6 +79,3 @@ class Checkout
   end
 
 end
-
-
-
