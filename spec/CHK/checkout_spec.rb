@@ -124,6 +124,10 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("Y")).to eq 20
       expect(Checkout.new.checkout("Z")).to eq 21
     end
+
+    it "groups SKU S, T, X, Y & Z into a deal of 3 for 45" do
+      expect(Checkout.new.checkout("S"*6)).to eq 90
+    end
   end
 
 end
