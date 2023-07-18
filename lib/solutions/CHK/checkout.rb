@@ -2,7 +2,7 @@
 class Checkout
 
   def checkout(skus)
-    return -1 if skus.match(/[^ABCD]/)
+    return -1 if skus.match(/[^ABCDE]/)
 
     # count_A = skus.count("A") % 3
     # special_A = skus.count("A") / 3
@@ -28,13 +28,13 @@ class Checkout
       normal_price = prices[sku][:price]
       special_offers = prices[sku][:offers]
       accum = count
-      offers.sort.reverse_each do |offer_count, offer_price|
+      special_offers.sort.reverse_each do |offer_count, offer_price|
         while accum >= offer_count
           total += offer_price
           accum -= offer_count
         end
       end
-      total += price * accum
+      total += normal_price * accum
     end
 
     return total
@@ -46,6 +46,3 @@ class Checkout
   end
 
 end
-
-
-

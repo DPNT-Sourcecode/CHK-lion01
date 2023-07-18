@@ -32,13 +32,22 @@ RSpec.describe Checkout do
     end
 
     it "correctly calculates checkout of big basket" do
-      expect(Checkout.new.checkout("ABDDACAABACAA")).to eq 425
+      expect(Checkout.new.checkout("ABDDACAABACAA")).to eq 415
     end
   end
 
   context "Round 2 tests" do
     it "has multiple offers for a single SKU. 7A = 300" do
       expect(Checkout.new.checkout("AAAAAAA")).to eq 300
+      expect(Checkout.new.checkout("AAAAAAAA")).to eq 330
+    end
+
+    it "returns a checkout value of 40 if only E in basket" do
+      expect(Checkout.new.checkout("E")).to eq 40
+    end
+
+    it "correctly calculates checkout of big basket" do
+      expect(Checkout.new.checkout("ABDEDACAABACAAEEE")).to eq 415
     end
 
   end
