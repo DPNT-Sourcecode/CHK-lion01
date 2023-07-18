@@ -30,4 +30,8 @@ RSpec.describe Checkout do
     expect(Checkout.new.checkout("AAA")).to eq 130
   end
 
+  it "correctly calculates checkout of big basket" do
+    expect(Checkout.new.checkout("ABDDACAABACAA")).to eq 425
+  end
+
 end
