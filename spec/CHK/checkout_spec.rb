@@ -26,4 +26,8 @@ RSpec.describe Checkout do
     expect(Checkout.new.checkout("ABC")).to eq 100
   end
 
+  it "factors in special offers too" do
+    expect(Checkout.new.checkout("AAA")).to eq 130
+  end
+
 end
