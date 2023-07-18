@@ -18,11 +18,11 @@ class Checkout
       'K' => {price: 80, offers: [[2, 150]]},
       'L' => {price: 90, offers: []},
       'M' => {price: 15, offers: []},
-      'N' => {price: 40, offers: [[3, 20]]},
+      'N' => {price: 40, offers: []},
       'O' => {price: 10, offers: []},
       'P' => {price: 50, offers: [[5, 200]]},
       'Q' => {price: 30, offers: [[3, 80]]},
-      'R' => {price: 50, offers: [[3, 20]]},
+      'R' => {price: 50, offers: []},
       'S' => {price: 30, offers: []},
       'T' => {price: 20, offers: []},
       'U' => {price: 40, offers: [[4, 120]]},
@@ -32,6 +32,7 @@ class Checkout
       'Y' => {price: 10, offers: []},
       'Z' => {price: 50, offers: []},
     }
+    
     total = 0
     sku_count = Hash.new(0)
 
@@ -41,6 +42,13 @@ class Checkout
 
     sku_count["B"] -= sku_count["E"] / 2
     if sku_count["B"] < 0 then sku_count["B"] = 0 end
+    
+    sku_count["M"] -= sku_count["N"] / 3
+    if sku_count["M"] < 0 then sku_count["M"] = 0 end
+
+    sku_count["Q"] -= sku_count["R"] / 3
+    if sku_count["Q"] < 0 then sku_count["Q"] = 0 end
+    
 
     sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
@@ -60,4 +68,5 @@ class Checkout
   end
 
 end
+
 

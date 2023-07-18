@@ -106,7 +106,15 @@ RSpec.describe Checkout do
     it "has a buy and got another SKU free for 3N get one M free" do
       expect(Checkout.new.checkout("NNNM")).to eq 120
       expect(Checkout.new.checkout("NNN")).to eq 120
+      expect(Checkout.new.checkout("NNNMM")).to eq 120 + 15
+    end
+
+    it "has a buy and got another SKU free for 3R get one Q free" do
+      expect(Checkout.new.checkout("RRRQ")).to eq 150
+      expect(Checkout.new.checkout("RRR")).to eq 150
+      expect(Checkout.new.checkout("RRRQQ")).to eq 150 + 30
     end
   end
 
 end
+
