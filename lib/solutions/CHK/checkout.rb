@@ -27,8 +27,17 @@ class Checkout
     sku_count.each do |sku, count|
       normal_price = prices[sku][:price]
       special_offers = prices[sku][:offers]
-      puts normal_price, special_offers
+      accum = count
+      offers.sort.reverse_each do |offer_count, offer_price|
+        while accum >= offer_count
+          total += offer_price
+          accum -= offer_count
+        end
+      end
+      total += price * accum
     end
+
+    return total
     
     # normal_offers = count_A * 50 + count_B * 30 + count_C * 20 + count_D * 15
     # special_offers = special_A * 130 + special_B * 45
@@ -37,5 +46,6 @@ class Checkout
   end
 
 end
+
 
 
