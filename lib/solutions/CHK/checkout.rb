@@ -44,15 +44,19 @@ class Checkout
       end
     end
 
-    puts "Group offer values", group_offer
-
     number_of_group_offers = group_offer.length / 3
-    total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
+    if number_of_group_offers = 0
+      total_group_offer = 0
+    else
+      total_group_offer = (number_of_group_offers * 45) + group_offer.sort.reverse[(2*number_of_group_offers + 1)...-1].sum
+    end
 
     adjust_total_for_free_items
 
     @sku_count.each do |sku, count|
-      next if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+      if group_offer.length >= 3
+        next if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+      end
       normal_price = prices[sku][:price]
       special_offers = prices[sku][:offers]
       accum = count
@@ -83,6 +87,7 @@ class Checkout
   end
 
 end
+
 
 
 
