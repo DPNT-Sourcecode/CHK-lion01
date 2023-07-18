@@ -51,6 +51,11 @@ RSpec.describe Checkout do
       expect(Checkout.new.checkout("EEE")).to eq 120
     end
 
+    it "returns a free B if 2E or 3E in basket." do
+      expect(Checkout.new.checkout("EEB")).to eq 80
+      expect(Checkout.new.checkout("EEEB")).to eq 120
+    end
+
     it "correctly calculates checkout of big basket" do
       expect(Checkout.new.checkout("ABDEDACAABACAAEEE")).to eq (300 + 0 + 40 + 30 + 160)
     end
@@ -58,6 +63,7 @@ RSpec.describe Checkout do
   end
 
 end
+
 
 
 
