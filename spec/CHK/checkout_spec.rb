@@ -6,4 +6,20 @@ RSpec.describe Checkout do
     expect(Checkout.new.checkout("A")).to eq 50
   end
 
+  it "returns a checkout value of 30 if only B in basket" do
+    expect(Checkout.new.checkout("B")).to eq 30
+  end
+
+  it "returns a checkout value of 20 if only C in basket" do
+    expect(Checkout.new.checkout("C")).to eq 20
+  end
+
+  it "returns a checkout value of 15 if only D in basket" do
+    expect(Checkout.new.checkout("D")).to eq 15
+  end
+
+  it "returns a checkout value of -1 if illegal input give" do
+    expect(Checkout.new.checkout("x")).to eq -1
+  end
+
 end

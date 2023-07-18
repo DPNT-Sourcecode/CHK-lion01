@@ -9,4 +9,3 @@ RSpec.describe Hello do
     expect(Hello.new.hello("Mark")).to eq "Hello, Mark!"
   end
 end
-
