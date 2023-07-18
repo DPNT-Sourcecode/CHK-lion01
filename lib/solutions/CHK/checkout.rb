@@ -33,6 +33,14 @@ class Checkout
       'Z' => {price: 21, offers: [[3, 45]]},
     }
 
+    puts @sku_count['S']
+
+    group_offer_sku = ['S', 'T', 'X', 'Y', 'Z']
+    group_offer_price = group_offer_sku.each do |sku|
+      @sku_count[sku]
+    end
+    puts group_offer_price
+
     total = 0
     @sku_count = Hash.new(0)
 
@@ -55,10 +63,10 @@ class Checkout
       total += normal_price * accum
     end
 
-    group_offer_count = @sku_count.select do |sku, _count|
-      ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
-    end
-    total -= group_offer_count.values.sum / 3 * 45
+    # group_offer_count = @sku_count.select do |sku, _count|
+    #   ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+    # end
+    # total -= group_offer_count.values.sum / 3 * 45
 
 
     return total
@@ -79,3 +87,4 @@ class Checkout
   end
 
 end
+
