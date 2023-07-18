@@ -55,6 +55,12 @@ class Checkout
       total += normal_price * accum
     end
 
+    group_count = @sku_count.select do |sku, _count|
+      ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+    end
+
+    puts group_count.values.sum
+
     return total
     
   end
@@ -73,4 +79,5 @@ class Checkout
   end
 
 end
+
 
