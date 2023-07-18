@@ -15,7 +15,7 @@ class Checkout
       'B' => {price: 30, offers: [[2, 45]]},
       'C' => {price: 20, offers: []},
       'D' => {price: 15, offers: []},
-      'E' => {price: 40, offers: [[3, 80]]},
+      'E' => {price: 40, offers: [[2, 0, 'B']]},
     }
     total = 0
     sku_count = Hash.new(0)
@@ -46,3 +46,4 @@ class Checkout
   end
 
 end
+
