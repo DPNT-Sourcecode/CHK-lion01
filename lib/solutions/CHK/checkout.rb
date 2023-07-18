@@ -4,7 +4,7 @@ class Checkout
   def checkout(skus)
     return -1 if skus.match(/[^A-Z]/)
 
-    prices = {
+    @prices = {
       'A' => {price: 50, offers: [[3, 130], [5, 200]]},
       'B' => {price: 30, offers: [[2, 45]]},
       'C' => {price: 20, offers: []},
@@ -33,40 +33,22 @@ class Checkout
       'Z' => {price: 21, offers: [[3, 45]]},
     }
 
-    total = 0
+    @total = 0
     @sku_count = Hash.new(0)
     @grouped_offer = []
 
     skus.each_char do |sku|
       @sku_count[sku] += 1
       if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
-        grouped_offer << prices[sku][:price]
+        @grouped_offer << @prices[sku][:price]
       end
     end
 
-    number_of_grouped_offers = @grouped_offer.length / 3
-    remaining_grouped_sku = @grouped_offer.length % 3
-    total_grouped_offer = number_of_grouped_offers * 45
-    total_grouped_offer += @grouped_offer.sort.take(remaining_grouped_sku).sum
-
+    calculate_grouped_offer
     adjust_total_for_free_items
-
-    @sku_count.each do |sku, count|
-      next if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
-
-      normal_price = prices[sku][:price]
-      special_offers = prices[sku][:offers]
-      accum = count
-      special_offers.sort.reverse_each do |offer_count, offer_price|
-        while accum >= offer_count
-          total += offer_price
-          accum -= offer_count
-        end
-      end
-      total += normal_price * accum
-    end
-
-    return total += total_grouped_offer
+    calculate_nongrouped
+  
+    return @total += @total_grouped_offer
     
   end
 
@@ -83,4 +65,29 @@ class Checkout
     if @sku_count["Q"] < 0 then @sku_count["Q"] = 0 end
   end
 
+  def calculate_nongrouped
+    @sku_count.each do |sku, count|
+      next if ['S', 'T', 'X', 'Y', 'Z'].include?(sku)
+
+      normal_price = @prices[sku][:price]
+      special_offers = @prices[sku][:offers]
+      accum = count
+      special_offers.sort.reverse_each do |offer_count, offer_price|
+        while accum >= offer_count
+          @total += offer_price
+          accum -= offer_count
+        end
+      end
+      @total += normal_price * accum
+    end
+  end
+
+  def calculate_grouped_offer
+    number_of_grouped_offers = @grouped_offer.length / 3
+    remaining_grouped_sku = @grouped_offer.length % 3
+    @total_grouped_offer = number_of_grouped_offers * 45
+    @total_grouped_offer += @grouped_offer.sort.take(remaining_grouped_sku).sum
+  end
+
 end
+
