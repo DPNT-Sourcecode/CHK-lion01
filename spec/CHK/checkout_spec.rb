@@ -127,6 +127,13 @@ RSpec.describe Checkout do
 
     it "groups SKU S, T, X, Y & Z into a deal of 3 for 45" do
       expect(Checkout.new.checkout("S"*6)).to eq 90
+      expect(Checkout.new.checkout("S"*3)).to eq 45
+      expect(Checkout.new.checkout("SXZ")).to eq 45
+      expect(Checkout.new.checkout("SXZYXS")).to eq 90
+    end
+
+    it "favours the customer with the deal for S, T, X, Y & Z by leaving the cheapest out of deal" do
+      expect(Checkout.new.checkout("SXZYXST")).to eq 90 + 17
     end
   end
 
